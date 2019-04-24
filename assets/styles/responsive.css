@@ -1,0 +1,61 @@
+/*============ Media 767Px Start ============ */
+@media (max-width: 990px) {
+	.navigation > ul {
+		display: none;
+		position: fixed;
+		top: 56px;
+		left: 0px;
+		width: 100%;
+		background-color: #f3f3f3;
+	}
+	.top_menu_wrap {
+		display: none;
+	}
+	.mobile_menu {
+		display: block;
+		background: transparent;
+		border: none;
+		padding: 15px 10px 10px 0px;
+		float: left;
+		cursor: pointer;
+	}
+	.mobile_profile {
+		display: block;
+		background: transparent;
+		border: none;
+		padding: 15px 0px 10px 0px;
+		float: right;
+		cursor: pointer;
+	}
+	.mobile_menu i, .mobile_profile i {
+		color: #505050;
+		font-size: 25px;
+	}
+	.logo {
+		display: none;
+	}
+	.mobile-logo {
+		display: block;
+		float: left;
+		font-size: 25px;
+		line-height: 54px;
+	}
+	.blog_more_btn {
+		display: none;
+	}
+	.banner_text h3 {
+		font-size: 16px;
+	}
+	.banner_text h1 {
+		font-size: 26px;
+	}
+	.tittle {
+		margin-bottom: 20px;
+	}
+	.about_disc {
+		margin-bottom: 20px;
+	}
+	.banner_home .menu-item {
+		margin-bottom: 10px;
+	}
+}

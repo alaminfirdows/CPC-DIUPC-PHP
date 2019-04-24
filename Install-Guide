@@ -1,0 +1,19 @@
+Stage4CancerCommunity MVC Blog (Version: 1.0.2)
+
+To install this framework, You should update the config file included on 'Application/Config/core.php' and 'Application/Config/db.php'.
+
+1. Setup your Home Directory URL.
+define('BASE_URL', 'YOUR-PROJECT-DIRECTORY-URL');
+
+2. Setup your Database Information
+private static $host_name = 'YOUR-DATABASE-HOME';
+private static $db_name = 'YOUR-DATABASE-NAME';
+private static $db_user_name = 'YOUR-DATABASE-USERNAME';
+private static $db_password = 'YOUR-DATABASE-PASSWORD';
+
+3. Import `stage4cancercommunity.sql` file on your Database. You may find this file on home Directory.
+
+4. Please put 1 if it's your root directory otherwise leave it 2 on line #26 at router.php (Optional)
+
+All Done.
+Enjoy!
