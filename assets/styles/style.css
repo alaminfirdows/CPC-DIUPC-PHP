@@ -1,5 +1,4 @@
 @import url('bootstrap.css');
-
 body {
     margin: 0;
     padding: 0;
@@ -10,26 +9,18 @@ body {
     background-color: #f9f9f9;
 }
 
-ol,
-ul,
-li,
-dl,
-p {
+ol, ul, li, dl, p {
     margin: 0px;
     padding: 0px;
 }
 
-a,
-a:hover,
-a:focus,
-a:active {
+a, a:hover, a:focus, a:active {
     outline: none;
     text-decoration: none;
     color: #2c2b5e;
 }
 
-input,
-textarea {
+input, textarea {
     font-size: 14px;
     padding: 10px 12px;
     background: #fff;
@@ -38,14 +29,11 @@ textarea {
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
 }
 
-input:focus,
-textarea:focus {
+input:focus, textarea:focus {
     border-color: #2c2b5e;
 }
 
-html [type="button"],
-html [type="reset"],
-html [type="submit"] {
+html [type="button"], html [type="reset"], html [type="submit"] {
     margin: 0px;
 }
 
@@ -86,9 +74,7 @@ html [type="submit"] {
     border: 2px solid #2c2b5e;
 }
 
-.button:hover,
-.button:focus,
-.button:active {
+.button:hover, .button:focus, .button:active {
     color: #fff;
     background: #2c2b5e;
     box-shadow: 2px 2px 6px rgba(57, 73, 76, .35);
@@ -119,11 +105,7 @@ html [type="submit"] {
     margin: 0px;
 }
 
-.wrapper,
-header,
-section,
-footer,
-.default_width {
+.wrapper, header, section, footer, .default_width {
     float: left;
     width: 100%;
     position: relative;
@@ -180,9 +162,7 @@ footer a {
     color: #505050;
 }
 
-.top_menu_a:hover,
-.top_menu_a:active,
-.top_menu_a:focus {
+.top_menu_a:hover, .top_menu_a:active, .top_menu_a:focus {
     background: #f9f9f9;
     color: #2c2b5e;
 }
@@ -211,10 +191,9 @@ footer a {
     color: #505050;
     display: block;
     padding: 18px 10px;
-    text-transform: uppercase;
     position: relative;
     line-height: 1.5;
-    font-weight: 600;
+    font-weight: 400;
     transition: 0.25s;
 }
 
@@ -312,20 +291,11 @@ footer a {
     padding: 5px;
 }
 
-.about_us_section,
-.service_section,
-.team_section,
-.event_section,
-.blog_section,
-.contact_section,
-.be_a_part_section {
+.about_us_section, .service_section, .team_section, .event_section, .blog_section, .contact_section, .be_a_part_section {
     padding: 30px 0px;
 }
 
-.about_us_section,
-.service_section,
-.event_section,
-.contact_section {
+.about_us_section, .service_section, .event_section, .contact_section {
     background: #ffffff;
 }
 
@@ -443,9 +413,7 @@ footer a {
     background: rgba(254, 254, 254, 0.9);
 }
 
-.team_list_ul,
-.event_list_ul,
-.blog_list_ul {
+.team_list_ul, .event_list_ul, .blog_list_ul {
     list-style: none;
     margin: 0;
     margin-bottom: 35px;
@@ -498,15 +466,13 @@ footer a {
     padding: 5px 2px;
 }
 
-.teachet_list_info {
+.teacher_list_info {
     background: rgb(44, 43, 94);
     padding: 5px 2px;
     color: #fff;
 }
 
-.team_small_list_item,
-.team_list_li_item,
-.team_list_item {
+.team_small_list_item, .team_list_li_item, .team_list_item {
     /* border: 2px solid transparent; */
     display: block;
     transition: all .25s;
@@ -519,11 +485,7 @@ footer a {
     transition: all .25s;
 }
 
-.team_small_list_item:hover,
-.team_list_li_item:hover,
-.team_list_item:hover,
-.event_list_item:hover,
-.blog_list_item:hover {
+.team_small_list_item:hover, .team_list_li_item:hover, .team_list_item:hover, .event_list_item:hover, .blog_list_item:hover {
     background: #fff;
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.13);
 }
@@ -627,8 +589,7 @@ footer a {
     font-size: 18px;
 }
 
-.event_reg_btn,
-.blog_more_btn {
+.event_reg_btn, .blog_more_btn {
     padding: 5px 15px;
     position: absolute;
     bottom: 10px;

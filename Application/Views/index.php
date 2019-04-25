@@ -2,7 +2,7 @@
 <section class="banner default_width">
     <div class="banner_home">
         <div class="banner_text">
-            <h3 class="">Daffodil International university</h3>
+            <h3 class="">Daffodil International University</h3>
             <h1 class="">COMPUTER AND PROGRAMMING CLUB</h1>
             <h3 class="">Permanemt Campus</h3>
             <div>
@@ -117,81 +117,92 @@
 <!--team-->
 <section class="team_section" id="team">
     <div class="container" style="z-index: 11">
-        <h3 class="tittle">Our Team</h3>
         <h3 class="tittle-2">Our Advisers</h3>
         <!--/member-teacher-->
         <div class="row">
             <div class="col col-md-12">
                 <!--/member-conv-->
                 <ul class="team_list_ul row">
-                    <li class="team_list_li col-md-2 col-sm-6">
+                    <li class="team_list_li col-md-2 col-sm-12">
                         <a class="team_list_item">
                             <div class="">
                                 <img class="team_list_img"
                                     src="<?php echo base_url('assets'); ?>/img/user/aminul-sir.png" />
                             </div>
-                            <div class="teachet_list_info">
+                            <div class="teacher_list_info">
                                 <p class="team_member_name">Dr. Aminul Haque</p>
                                 <p class="team_member_status">Associate Head, CSE</p>
                             </div>
                         </a>
                     </li>
-                    <li class="team_list_li col-md-2 col-sm-6">
-                        <a class="team_list_item">
-                            <div class="">
-                                <img class="team_list_img"
-                                    src="<?php echo base_url('assets'); ?>/img/user/reduanul-sir.png" />
-                            </div>
-                            <div class="teachet_list_info">
-                                <p class="team_member_name">Mr. Reduanul Haque</p>
-                                <p class="team_member_status">Lecturer, CSE</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="team_list_li col-md-2 col-sm-6">
-                        <a class="team_list_item">
-                            <div class="">
-                                <img class="team_list_img"
-                                    src="<?php echo base_url('assets'); ?>/img/user/emon-sir.png" />
-                            </div>
-                            <div class="teachet_list_info">
-                                <p class="team_member_name">Toufik Ahmed Emon</p>
-                                <p class="team_member_status">Lecturer, CSE</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="team_list_li col-md-2 col-sm-6">
-                        <a class="team_list_item">
-                            <div class="">
-                                <img class="team_list_img"
-                                    src="<?php echo base_url('assets'); ?>/img/user/akhi-mem.png" />
-                            </div>
-                            <div class="teachet_list_info">
-                                <p class="team_member_name">Amatul Bushra Akhi</p>
-                                <p class="team_member_status">Lecturer, CSE</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="team_list_li col-md-2 col-sm-6">
+                    <li class="team_list_li col-md-2 col-sm-6 col-6">
                         <a class="team_list_item">
                             <div class="">
                                 <img class="team_list_img"
                                     src="<?php echo base_url('assets'); ?>/img/user/raju-sir.png" />
                             </div>
-                            <div class="teachet_list_info">
+                            <div class="teacher_list_info">
                                 <p class="team_member_name">Mahfujur Rahman</p>
                                 <p class="team_member_status">Lecturer, CSE</p>
                             </div>
                         </a>
                     </li>
-                    <li class="team_list_li col-md-2 col-sm-6">
+                    <li class="team_list_li col-md-2 col-sm-6 col-6">
                         <a class="team_list_item">
                             <div class="">
                                 <img class="team_list_img"
-                                    src="<?php echo base_url('assets'); ?>/img/user/bulbul-sir.png" />
+                                    src="<?php echo base_url('assets'); ?>/img/user/hasin-rehena-mam.png" />
                             </div>
-                            <div class="teachet_list_info">
-                                <p class="team_member_name">Bulbul Ahammad</p>
+                            <div class="teacher_list_info">
+                                <p class="team_member_name">Hasin Rehena</p>
+                                <p class="team_member_status">Lecturer, CSE</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="team_list_li col-md-2 col-sm-6 col-6">
+                        <a class="team_list_item">
+                            <div class="">
+                                <img class="team_list_img"
+                                    src="<?php echo base_url('assets'); ?>/img/user/saifuzaman-sir.png" />
+                            </div>
+                            <div class="teacher_list_info">
+                                <p class="team_member_name">Mr. Saifuzaman</p>
+                                <p class="team_member_status">Lecturer, CSE</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="team_list_li col-md-2 col-sm-6 col-6">
+                        <a class="team_list_item">
+                            <div class="">
+                                <img class="team_list_img"
+                                    src="<?php echo base_url('assets'); ?>/img/user/rasel-sir.png" />
+                            </div>
+                            <div class="teacher_list_info">
+                                <p class="team_member_name">Rasel Sarker</p>
+                                <p class="team_member_status">Lecturer, CSE</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="team_list_li col-md-2 col-sm-6 col-6">
+                        <a class="team_list_item">
+                            <div class="">
+                                <img class="team_list_img"
+                                    src="<?php echo base_url('assets'); ?>/img/user/reduanul-sir.png" />
+                            </div>
+                            <div class="teacher_list_info">
+                                <p class="team_member_name">Mr. Reduanul Haque</p>
+                                <p class="team_member_status">Lecturer, CSE</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="team_list_li col-md-2 col-sm-6 col-6">
+                        <a class="team_list_item">
+                            <div class="">
+                                <img class="team_list_img"
+                                    src="<?php echo base_url('assets'); ?>/img/user/tanvir-sir.png" />
+                            </div>
+                            <div class="teacher_list_info">
+                                <p class="team_member_name">Tanvir Ahammad</p>
                                 <p class="team_member_status">Lecturer, CSE</p>
                             </div>
                         </a>
@@ -280,6 +291,18 @@
                         <a class="team_list_item">
                             <div class="">
                                 <img class="team_list_img"
+                                    src="<?php echo base_url('assets'); ?>/img/members/anher.jpg" />
+                            </div>
+                            <div class="team_list_info">
+                                <p class="team_member_name">Anhar</p>
+                                <p class="team_member_status">Join Secretary</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="team_list_li col-md-2 col-sm-6">
+                        <a class="team_list_item">
+                            <div class="">
+                                <img class="team_list_img"
                                     src="<?php echo base_url('assets'); ?>/img/members/joint_sec_dev.jpg" />
                             </div>
                             <div class="team_list_info">
@@ -319,7 +342,7 @@
                                     src="<?php echo base_url('assets'); ?>/img/members/photographer.jpg" />
                             </div>
                             <div class="team_list_info">
-                                <p class="team_member_name">Md Masidul Hasan</p>
+                                <p class="team_member_name">Fahad</p>
                                 <p class="team_member_status">Photographer</p>
                             </div>
                         </a>
@@ -404,6 +427,30 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="team_list_li col-md-2 col-sm-6">
+                            <a class="team_list_item">
+                                <div class="">
+                                    <img class="team_list_img"
+                                        src="<?php echo base_url('assets'); ?>/img/members/lead_executive.jpg" />
+                                </div>
+                                <div class="team_list_info">
+                                    <p class="team_member_name">Nadim</p>
+                                    <p class="team_member_status">Executive Head</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="team_list_li col-md-2 col-sm-6">
+                            <a class="team_list_item">
+                                <div class="">
+                                    <img class="team_list_img"
+                                        src="<?php echo base_url('assets'); ?>/img/members/forhad.jpg" />
+                                </div>
+                                <div class="team_list_info">
+                                    <p class="team_member_name">Forhad</p>
+                                    <p class="team_member_status">Executive Head</p>
+                                </div>
+                            </a>
+                        </li>
                     </div>
                 </ul>
                 <!--/member-conv-->
@@ -427,11 +474,12 @@
 <section class="event_section" id="event">
     <div class="container">
         <div class="event_wrap default_width">
-            <h3 class="tittle">Upcoming Events</h3>
+            <h3 class="tittle">Semester Activity</h3>
             <div class="row">
                 <div class="col col-md-12">
                     <ul class="event_list_ul">
                         <div class="row">
+                            <?php foreach ($semester_activities as $semester_activity) : ?>
                             <li class="event_list_li col-md-6">
                                 <div class="card event_list_item">
                                     <div class="left">
@@ -440,10 +488,11 @@
                                         </div>
                                     </div>
                                     <div class="event_list_info">
-                                        <p class="event_name">CSE Fest'17 Prizing Giving Ceremony & Cultaral Events</p>
+                                        <p class="event_name"><?= $semester_activity->title; ?></p>
                                         <p class="event_status">
-                                            <i class="material-icons">room</i>DIU Auditorium, PC<br>
-                                            <i class="material-icons">query_builder</i>02.00pm<br>
+                                            <i class="material-icons">room</i><?= $semester_activity->venue; ?><br>
+                                            <i
+                                                class="material-icons">query_builder</i><?= $semester_activity->time; ?><br>
                                         </p>
                                         <div class="">
                                             <a href="#" class="button event_reg_btn">Reg</a>
@@ -451,25 +500,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="event_list_li col-md-6">
-                                <div class="card event_list_item">
-                                    <div class="left">
-                                        <div class="event-date">
-                                            <h3><a href="event-details.html">26 <span>Jan</span></a></h3>
-                                        </div>
-                                    </div>
-                                    <div class="event_list_info">
-                                        <p class="event_name">Development Class</p>
-                                        <p class="event_status">
-                                            <i class="material-icons">room</i>LAB 301, 302, 303 (AB1)<br>
-                                            <i class="material-icons">query_builder</i>02.00pm<br>
-                                        </p>
-                                        <div class="">
-                                            <a href="#" class="button event_reg_btn">Reg</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            <?php endforeach; ?>
                         </div>
                     </ul>
                 </div>
@@ -485,76 +516,42 @@
 <section class="blog_section" id="blog">
     <div class="container">
         <div class="blog_wrap default_width">
-            <h3 class="tittle">Latest Update</h3>
+            <h3 class="tittle">Events</h3>
             <div class="row">
                 <div class="col col-md-12">
                     <ul class="blog_list_ul">
                         <div class="row">
-
-                            <!--/member-teacher-->
+                            <?php foreach ($events as $event) : ?>
                             <li class="blog_list_li col-md-4">
                                 <div class="card blog_list_item">
                                     <div class="blog_list_img">
-                                        <a href="#" class=""><img class=""
-                                                src="<?php echo base_url('assets'); ?>/img/blog/post-1.png" /></a>
+                                        <a class="post-img" href="#">
+                                            <img src="<?php if (isset($event->featuredImage) && $event->featuredImage != '') {
+                                                                echo event_image_url($event->featuredImage);
+                                                            } else {
+                                                                echo base_url('assets') . '/img/event-no-image.png';
+                                                            } ?>" alt="<?= $event->title; ?>" style="height: 190px">
+                                        </a>
                                     </div>
                                     <div class="blog_list_info">
                                         <div class="post_meta">
-                                            <span class=""><i class="material-icons">query_builder</i>12 Sep,
-                                                2017</span>
-                                            <span class=""><i class="material-icons">folder_open</i>ACM</span>
-                                            <span class=""><i class="material-icons">remove_red_eye</i>120<br></span>
+                                            <span class=""><i
+                                                    class="material-icons">query_builder</i><?= $event->date; ?></span>
+                                            <span class=""><i
+                                                    class="material-icons">folder_open</i><?= $event->cat_name; ?></span>
+                                            <span class=""><i
+                                                    class="material-icons">remove_red_eye</i><?= $event->semester_name; ?><br></span>
                                         </div>
-                                        <a href="#" class="blog_title">Take Off, Fall-2017</a>
+                                        <a href="#" class="blog_title"><?= $event->title; ?></a>
                                         <div class="">
                                             <a href="#" class="button blog_more_btn">Read more</a>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li class="blog_list_li col-md-4">
-                                <div class="card blog_list_item">
-                                    <div class="blog_list_img">
-                                        <a href="#" class=""><img class=""
-                                                src="<?php echo base_url('assets'); ?>/img/blog/post-1.png" /></a>
-                                    </div>
-                                    <div class="blog_list_info">
-                                        <div class="post_meta">
-                                            <span class=""><i class="material-icons">query_builder</i>12 Sep,
-                                                2017</span>
-                                            <span class=""><i class="material-icons">folder_open</i>ACM</span>
-                                            <span class=""><i class="material-icons">remove_red_eye</i>120<br></span>
-                                        </div>
-                                        <a href="#" class="blog_title">Take Off, Fall-2017</a>
-                                        <div class="">
-                                            <a href="#" class="button blog_more_btn">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="blog_list_li col-md-4">
-                                <div class="card blog_list_item">
-                                    <div class="blog_list_img">
-                                        <a href="#" class=""><img class=""
-                                                src="<?php echo base_url('assets'); ?>/img/blog/post-1.png" /></a>
-                                    </div>
-                                    <div class="blog_list_info">
-                                        <div class="post_meta">
-                                            <span class=""><i class="material-icons">query_builder</i>12 Sep,
-                                                2017</span>
-                                            <span class=""><i class="material-icons">folder_open</i>ACM</span>
-                                            <span class=""><i class="material-icons">remove_red_eye</i>120<br></span>
-                                        </div>
-                                        <a href="#" class="blog_title">Take Off, Fall-2017</a>
-                                        <div class="">
-                                            <a href="#" class="button blog_more_btn">Read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            <?php endforeach; ?>
                         </div>
                     </ul>
-                    <!--/member-teacher-->
                 </div>
             </div>
         </div>
@@ -571,13 +568,13 @@
             <h3 class="tittle">Contact</h3>
             <div class="row">
                 <!-- <div class="col-md-4">
-              <div class="card col-md-12 m-t_b_10" style="min-height: 245px;">
-                A
-              </div>
-            </div> -->
+                      <div class="card col-md-12 m-t_b_10" style="min-height: 245px;">
+                        A
+                      </div>
+                    </div> -->
                 <div class="col-md-12">
                     <span class="devider-1"></span>
-                    <form id="" method="POST" action="send_mail.php">
+                    <form id="" method="POST" action="">
                         <div class="row">
                             <div class="col-md-6">
                                 <input type="text" name="name" class="block m-t_b_10" placeholder="Name">
@@ -590,7 +587,8 @@
                             <div class="col-md-12">
                                 <textarea rows="4" name="message" class="block m-t_b_10"
                                     placeholder="Message"></textarea>
-                                <button type="submit" name="send" class="button button-outline block">Send</button>
+                                <button type="submit" name="send-message"
+                                    class="button button-outline block">Send</button>
                             </div>
                         </div>
                     </form>

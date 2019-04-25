@@ -26,9 +26,9 @@
                         <ul class="">
                             <li><a href="#contact" class="menu-item top_menu_a">Have A Question?</a></li><span style=""
                                 class="span-1"></span>
-                            <li><a href="tel:+88 01740450457" class="top_menu_a">+88 01740450457</a></li><span style=""
+                            <li><a href="tel:+88 01827593387" class="top_menu_a">+88 01827593387</a></li><span style=""
                                 class="span-1"></span>
-                            <li><a href="mailto:info@diucpc-pc.club" class="top_menu_a">info@diucpc-pc.club</a></li>
+                            <li><a href="mailto:cpc-pc@diu.edu.bd" class="top_menu_a">cpc-pc@diu.edu.bd</a></li>
                         </ul>
                     </div>
                     <div class="top_menu_element right">
@@ -46,11 +46,13 @@
                     </button>
 
                     <div class="mobile-logo logo">
-                        <a href=""><img src="<?php echo base_url('assets'); ?>/img/logo/logo.png" alt=""></a>
+                        <a href="<?= base_url(); ?>"><img src="<?php echo base_url('assets'); ?>/img/logo/logo.png"
+                                alt=""></a>
                     </div>
 
                     <div class="logo">
-                        <a href=""><img src="<?php echo base_url('assets'); ?>/img/logo/logo.png" alt=""></a>
+                        <a href="<?= base_url(); ?>"><img src="<?php echo base_url('assets'); ?>/img/logo/logo.png"
+                                alt=""></a>
                     </div>
 
                     <button class="mobile_profile" id="mobile_profile">
@@ -61,13 +63,14 @@
                     <nav class="navigation">
                         <ul>
                             <li><a href="#home" class="menu-item">Home</a></li>
-                            <li><a href="#about" class="menu-item">About CPC</a></li>
+                            <li><a href="#about" class="menu-item">About</a></li>
                             <li><a href="#wings" class="">Wings</a></li>
                             <li><a href="#team" class="menu-item">Team</a></li>
                             <li><a href="#event" class="menu-item">Semester Activity</a></li>
-                            <li><a href="#event" class="menu-item">Events</a></li>
-                            <li><a href="#blog" class="menu-item">Blog</a></li>
-                            <li><a href="#blog" class="menu-item">Take Off</a></li>
+                            <li><a href="#blog" class="menu-item">Events</a></li>
+                            <li><a href="#" class="menu-item">ICT Carnival</a></li>
+                            <li><a href="#" class="menu-item">Member Resources</a></li>
+                            <li><a href="#" class="menu-item">Take Off</a></li>
                             <li><a href="#contact" class="menu-item">Contact</a></li>
                         </ul>
                     </nav>

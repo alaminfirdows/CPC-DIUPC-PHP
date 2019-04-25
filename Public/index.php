@@ -33,6 +33,10 @@ function post_image_url($file = '') {
     if ($file) return BASE_URL. 'uploads/post-images/' . $file;
     return;
 }
+function event_image_url($file = '') {
+    if ($file) return BASE_URL. 'uploads/event-images/' . $file;
+    return;
+}
 
 
 function set_flush_data($var, $data, $type ='')
@@ -59,4 +63,3 @@ function get_flush_data($var)
 
 $dispatch = new Dispatcher();
 $dispatch->dispatch();
-?>

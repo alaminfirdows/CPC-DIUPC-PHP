@@ -42,29 +42,32 @@ class Admin extends Controller
     public function events($action = '', $id = '')
     {
         if ($action == '') {
-            $post_model = $this->load_model('Post_Model');
+            $event_model = $this->load_model('Event_Model');
             if (isset($_POST['delete'])) {
-                $post_id = $this->secure_input($_POST['post-id']);
-                $delete = $post_model->deletePost($post_id);
+                $event_id = $this->secure_input($_POST['event-id']);
+                $delete = $event_model->delete($event_id);
                 if ($delete) {
-                    set_flush_data('post_moderation_responce', 'Post Deleted!', 'success');
+                    set_flush_data('event_moderation_responce', 'Post Deleted!', 'success');
                 } else {
-                    set_flush_data('post_moderation_responce', 'Something Wrong!', 'error');
+                    set_flush_data('event_moderation_responce', 'Something Wrong!', 'error');
                 }
             }
 
             $data = array(
-                'events' => $post_model->getAllPostsWithAllMeta()
+                'events' => $event_model->getAllEvents()
             );
+
+            // var_dump($data);
+            // exit();
 
             $this->view('admin/header');
             $this->view('admin/events', $data);
             $this->view('admin/footer');
         } else if (!empty($action) && $action == 'add') {
 
-            $post_model = $this->load_model('Post_Model');
+            $event_model = $this->load_model('event_model');
             $data = array(
-                'categorys' => $post_model->getAllCategorys()
+                'categories' => $event_model->getAllCategories()
             );
 
             if (isset($_POST['publish-post']) || isset($_POST['draft-post'])) {
@@ -170,73 +173,150 @@ class Admin extends Controller
 
             $data = array(
                 'post_data' => $post_model->getPostByID($id),
-                'categorys' => $post_model->getAllCategorys()
+                'categories' => $post_model->getAllCategories()
             );
 
             $this->view('admin/header');
             $this->view('admin/events-edit', $data);
             $this->view('admin/footer');
         } else {
-            header('Location: ' . base_url('blog_admin'));
+            header('Location: ' . base_url('admin'));
             exit();
         }
     }
 
-    public function comments($action = '', $id = '')
+
+    public function semester_activities($action = '', $id = '')
     {
-        $comment_model = $this->load_model('Comment_Model');
-
-        if (isset($_POST['approve'])) {
-            $comment_id = $this->secure_input($_POST['comment-id']);
-            $approve = $comment_model->approveComment($comment_id);
-            if ($approve) {
-                set_flush_data('comment_moderation_responce', 'Comment Approved!');
-            } else {
-                set_flush_data('comment_moderation_responce', 'Something Wrong!');
-            }
-        } else if (isset($_POST['deny'])) {
-            $comment_id = $this->secure_input($_POST['comment-id']);
-            $deny = $comment_model->denyComment($comment_id);
-            if ($deny) {
-                set_flush_data('comment_moderation_responce', 'Comment Denied!');
-            } else {
-                set_flush_data('comment_moderation_responce', 'Something Wrong!');
-            }
-        } else if (isset($_POST['mark-spam'])) {
-            $comment_id = $this->secure_input($_POST['comment-id']);
-            $mark_spam = $comment_model->markSpamComment($comment_id);
-            if ($mark_spam) {
-                set_flush_data('comment_moderation_responce', 'Comment Marked as Spam!');
-            } else {
-                set_flush_data('comment_moderation_responce', 'Something Wrong!');
-            }
-        } else if (isset($_POST['delete'])) {
-            $comment_id = $this->secure_input($_POST['comment-id']);
-            $delete = $comment_model->deleteComment($comment_id);
-            if ($delete) {
-                set_flush_data('comment_moderation_responce', 'Comment Deleted!');
-            } else {
-                set_flush_data('comment_moderation_responce', 'Something Wrong!');
-            }
-        }
-
         if ($action == '') {
+            $semester_activity_model = $this->load_model('SemesterActivity_Model');
+            if (isset($_POST['delete'])) {
+                $activity_id = $this->secure_input($_POST['activity-id']);
+                $delete = $semester_activity_model->delete($activity_id);
+                if ($delete) {
+                    set_flush_data('activity_moderation_responce', 'Activity Deleted!', 'success');
+                } else {
+                    set_flush_data('activity_moderation_responce', 'Something Wrong!', 'error');
+                }
+            }
+
             $data = array(
-                'comments' => $comment_model->getAllComments(),
-            );
-            $this->view('admin/header');
-            $this->view('admin/comments', $data);
-            $this->view('admin/footer');
-        } else if (!empty($action) && $action == 'pending') {
-            $data = array(
-                'pending_comments' => $comment_model->getAllPendingComments(),
+                'semester_activities' => $semester_activity_model->getAllActivitiesWithAllMeta()
             );
 
             $this->view('admin/header');
-            $this->view('admin/comments-pending', $data);
+            $this->view('admin/semester_activities', $data);
+            $this->view('admin/footer');
+        } else if (!empty($action) && $action == 'add') {
+
+            $semester_activity_model = $this->load_model('SemesterActivity_Model');
+            $category_model = $this->load_model('Category_Model');
+            $semester_model = $this->load_model('Semester_Model');
+            $data = array(
+                'categories' => $category_model->getAllCategories(),
+                'semesters' => $semester_model->getAllSemesters()
+            );
+
+            if (isset($_POST['publish-activity']) || isset($_POST['draft-activity'])) {
+                if (isset($_POST['draft-activity'])) {
+                    $post_status = 3;
+                } else {
+                    $post_status = $_POST['status'];
+                }
+
+                $activity_data = array(
+                    'title' => $this->secure_input($_POST['title']),
+                    'description' => $this->secure_input($_POST['description']),
+                    'date' => $this->secure_input($_POST['date']),
+                    'time' => $this->secure_input($_POST['time']),
+                    'venue' => $this->secure_input($_POST['venue']),
+                    'category' => $this->secure_input($_POST['category']),
+                    'semester' => $this->secure_input($_POST['semester']),
+                    'status' => $this->secure_input($post_status),
+                    'createdAt' => date('Y-m-d H:i:s')
+                );
+
+                // var_dump($post_data);
+                // exit();
+
+                $add_activity = $semester_activity_model->insert($activity_data);
+                if ($add_activity && $post_status == 3) {
+                    set_flush_data('add_post_responce', 'Your Activity has been saved as Draft!');
+                } else if ($add_activity && $post_status == 2) {
+                    set_flush_data('add_post_responce', 'Your Activity has been saved as Unpublished!');
+                } else if ($add_activity) {
+                    set_flush_data('add_post_responce', 'Your Activity has been Published!');
+                } else {
+                    set_flush_data('add_post_responce', 'Something Wrong!');
+                }
+            }
+
+            $this->view('admin/header');
+            $this->view('admin/semester_activities-add', $data);
+            $this->view('admin/footer');
+        } else if (!empty($action) && $action == 'edit') {
+            if (!isset($id) || empty($id)) {
+                header('Location: ' . base_url('admin/semester_activities'));
+                exit();
+            }
+            $semester_activity_model = $this->load_model('SemesterActivity_Model');
+            $category_model = $this->load_model('Category_Model');
+            $semester_model = $this->load_model('Semester_Model');
+
+            if (isset($_POST['update-post'])) {
+
+                $featuredImageUrl = NULL;
+                $has_featured_photo = 0;
+                $post_status = $this->secure_input($_POST['status']);
+                if (isset($_FILES["featured-image"])) {
+                    if (file_exists($_FILES["featured-image"]["tmp_name"])) {
+                        $target_dir = ROOT . "uploads/post-images/";
+                        $target_file = $target_dir . basename($_FILES["featured-image"]["name"]);
+                        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                        $has_featured_photo = 1;
+                    }
+
+                    if ($has_featured_photo && $_FILES["featured-image"]["size"] > 5000000) {
+                        set_flush_data('add_post_responce', 'Sorry, your file is too large.', 'error');
+                    } else if ($has_featured_photo && $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG" && $imageFileType != "GIF") {
+                        set_flush_data('add_post_responce', 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.', 'error');
+                    } else if ($has_featured_photo && move_uploaded_file($_FILES["featured-image"]["tmp_name"], $target_file)) {
+                        $featuredImageUrl = basename($_FILES["featured-image"]["name"]);
+                    }
+                }
+
+                $post_data = array(
+                    'title' => $this->secure_input($_POST['title']),
+                    'body' => $this->secure_input($_POST['body']),
+                    'category' => $this->secure_input($_POST['category']),
+                    'status' => $this->secure_input($_POST['status']),
+                    'featuredImage' => $featuredImageUrl,
+                    'updatedAt' => date('Y-m-d H:i:s')
+                );
+
+                $update_post = $post_model->updatePost($id, $post_data);
+                if ($update_post && $post_status == 3) {
+                    set_flush_data('update_post_responce', 'Your Post has been saved as Draft!', 'success');
+                } else if ($update_post && $post_status == 2) {
+                    set_flush_data('update_post_responce', 'Your Post has been saved as Unblished!', 'success');
+                } else if ($update_post) {
+                    set_flush_data('update_post_responce', 'Your Post has been Published!', 'success');
+                } else {
+                    set_flush_data('update_post_responce', 'Something Wrong!', 'error');
+                }
+            }
+
+            $data = array(
+                'activity_data' => $semester_activity_model->getActivityByID($id),
+                'categories' => $category_model->getAllCategories(),
+                'semesters' => $semester_model->getAllSemesters()
+            );
+
+            $this->view('admin/header');
+            $this->view('admin/semester_activities-edit', $data);
             $this->view('admin/footer');
         } else {
-            header('Location: ' . base_url('blog_admin/comment'));
+            header('Location: ' . base_url('admin'));
             exit();
         }
     }
@@ -274,7 +354,7 @@ class Admin extends Controller
             }
 
             $data = array(
-                'categorys' => $category_model->getAllCategorys(),
+                'categories' => $category_model->getAllCategories(),
             );
             $this->view('admin/header');
             $this->view('admin/category', $data);
@@ -301,7 +381,7 @@ class Admin extends Controller
             $this->view('admin/footer');
         } else if (!empty($action) && $action == 'edit') {
             if (!$id) {
-                header('Location: ' . base_url('blog_admin/categories'));
+                header('Location: ' . base_url('admin/categories'));
                 exit();
             }
 
@@ -326,7 +406,7 @@ class Admin extends Controller
             $this->view('admin/category-edit', $data);
             $this->view('admin/footer');
         } else {
-            header('Location: ' . base_url('blog_admin'));
+            header('Location: ' . base_url('admin'));
             exit();
         }
     }
@@ -409,11 +489,11 @@ class Admin extends Controller
                 $this->view('admin/users-edit', $data);
                 $this->view('admin/footer');
             } else {
-                header('Location: ' . base_url('blog_admin/users'));
+                header('Location: ' . base_url('admin/users'));
                 exit();
             }
         } else {
-            header('Location: ' . base_url('blog_admin'));
+            header('Location: ' . base_url('admin'));
             exit();
         }
     }
