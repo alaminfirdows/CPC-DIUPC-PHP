@@ -1,17 +1,17 @@
 <div class="app-title">
     <div>
-        <h1><i class="fa fa-dashboard"></i>Edit Posts</h1>
-        <p>Edit Posts</p>
+        <h1><i class="fa fa-dashboard"></i>Edit Semester Activity</h1>
+        <p>Edit Semester Activity</p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item"><a href="#">Posts</a></li>
-        <li class="breadcrumb-item active"><a href="#">Edit Posts</a></li>
+        <li class="breadcrumb-item"><a href="#">Semester Activity</a></li>
+        <li class="breadcrumb-item active"><a href="#">Edit Semester Activity</a></li>
     </ul>
 </div>
 <form method="POST" action="" enctype="multipart/form-data">
     <?php
-    $responce = get_flush_data('update_post_responce');
+    $responce = get_flush_data('update_activity_responce');
     if (isset($responce) && !empty($responce)) :
         ?>
     <div class="row">
@@ -35,16 +35,36 @@
         <div class="col-md-12 col-lg-8">
             <div class="tile">
                 <div class="form-group">
-                    <label for="title">Post Title</label>
-                    <input class="form-control" id="title" name="title" type="text" required
-                        aria-describedby="titleHelp" placeholder="Enter Post Title"
-                        value="<?= $activity_data->title; ?>">
-                    <small class="form-text text-muted" id="titleHelp">It will shows as post title.</small>
+                    <label for="title">Activity Title</label>
+                    <input class="form-control" id="title" name="title" type="text"
+                        value="<?= $activity_data->title; ?>" required aria-describedby="titleHelp"
+                        placeholder="Enter Activity Title">
+                    <small class="form-text text-muted" id="titleHelp">It will shows as Activity title.</small>
                 </div>
                 <div class="form-group">
-                    <label for="body">Post Description</label>
-                    <textarea class="ckeditor form-control" id="body" name="body" rows="3"
-                        required><?= $activity_data->title; ?></textarea>
+                    <label for="body">Activity Description</label>
+                    <textarea class="ckeditor form-control" id="description" name="description" rows="3"
+                        required><?= $activity_data->description; ?></textarea>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="body">Date</label>
+                        <input class="form-control datepicker" id="date" name="date" type="text"
+                            value="<?= $activity_data->date; ?>" required aria-describedby="dateHelp"
+                            placeholder="Enter Activity Date">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="body">Time</label>
+                        <input class="form-control" id="time" name="time" type="time"
+                            value="<?= $activity_data->time; ?>" required aria-describedby="timeHelp"
+                            placeholder="Enter Activity Time">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="venue">Venue</label>
+                    <input class="form-control" id="venue" name="venue" type="text"
+                        value="<?= $activity_data->venue; ?>" required aria-describedby="venueHelp"
+                        placeholder="Enter Venue">
                 </div>
             </div>
         </div>
@@ -58,7 +78,7 @@
                                             } ?>>Published</option>
                         <option value="2" <?php if ($activity_data->status == 2) {
                                                 echo 'selected';
-                                            } ?>>Unblished</option>
+                                            } ?>>Unpublished</option>
                         <option value="3" <?php if ($activity_data->status == 3) {
                                                 echo 'selected';
                                             } ?>>Draft</option>
@@ -67,48 +87,40 @@
                 <div class="form-group">
                     <label for="category">Category</label>
                     <select class="form-control" id="category" name="category" required>
-                        <?php foreach ($categorys as $category) : ?>
+                        <?php foreach ($categories as $category) : ?>
                         <option value="<?= $category->id; ?>" <?php if ($category->id == $activity_data->category) {
                                                                         echo 'selected';
                                                                     } ?>><?= $category->name; ?></option>
                         <?php endforeach; ?>
-                        <?php if (count($categorys) < 1) : ?>
+                        <?php if (count($categories) < 1) : ?>
                         <option value=""><?= 'No Categoy Found!'; ?></option>
                         <?php endif; ?>
                     </select>
                 </div>
-                <div class="mb-3" id="showFeaturedImageDiv" style="border: 2px solid #ced4da;">
-                    <img src="<?php if (isset($activity_data->featuredImage) && $activity_data->featuredImage != '') {
-                                    echo post_image_url($activity_data->featuredImage);
-                                } else {
-                                    echo base_url('assets') . '/img/post-no-image.png';
-                                } ?>" alt="<?= $activity_data->title; ?>" id="showFeaturedImage"
-                        alt="showFeaturedImage" class="img-fluid">
+                <div class="form-group">
+                    <label for="semester">Semester</label>
+                    <select class="form-control" id="semester" name="semester" required>
+                        <?php foreach ($semesters as $semester) : ?>
+                        <option value="<?= $semester->id; ?>" <?php if ($semester->id == $activity_data->semester) {
+                                                                        echo 'selected';
+                                                                    } ?>><?= $semester->name; ?></option>
+                        <?php endforeach; ?>
+                        <?php if (count($semesters) < 1) : ?>
+                        <option value=""><?= 'No semester Found!'; ?></option>
+                        <?php endif; ?>
+                    </select>
                 </div>
-                <button class="btn btn-primary btn-block mb-3 d-none" id="removeFeaturedImage" type="button"
-                    onclick="$('#showFeaturedImage').attr('src', ''); $('#featured-image').val(''); $('#showFeaturedImageDiv').removeClass('d-block').addClass('d-none'); $('#removeFeaturedImage').removeClass('d-block').addClass('d-none');">Remove</button>
 
-                <label for="featured-image">Featured Image</label>
-                <div class="form-group custom-file">
-                    <input type="file" class="custom-file-input" name="featured-image" id="featured-image"
-                        onchange="document.getElementById('showFeaturedImage').src = window.URL.createObjectURL(this.files[0]); $('#showFeaturedImageDiv').addClass('d-block'); $('#removeFeaturedImage').addClass('d-block');"
-                        value="<?php if (isset($activity_data->featuredImage) && $activity_data->featuredImage != '') {
-                                                                                                                                                                                                                                                                                                                                echo $activity_data->featuredImage;
-                                                                                                                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                                                                                                                                echo '';
-                                                                                                                                                                                                                                                                                                                            } ?>">
-                    <label class="custom-file-label" for="featured-image">Choose file...</label>
-                </div>
                 <div class="row mt-3">
                     <div class="col-sm-6">
-                        <a href="<?= base_url('admin/posts/'); ?>" class="btn btn-secondary btn-block">Cancel</a>
+                        <a href="<?= base_url('admin/semester_activities/'); ?>"
+                            class="btn btn-secondary btn-block">Cancel</a>
                     </div>
                     <div class="col-sm-6">
-                        <button class="btn btn-block btn-primary" type="submit" id="update-post"
-                            name="update-post">Update</button>
+                        <button class="btn btn-block btn-primary" type="submit" id="publish-activity"
+                            name="update-activity">Publish</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </form>

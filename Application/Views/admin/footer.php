@@ -1,8 +1,8 @@
     </main>
     <footer id="main-footer" class="bg-dark text-white p-2">
         <div class="container text-center">
-            Develop with <i class="fa fa-heart-o"></i> by <a href="https://alamin.me" target="_blank"
-                style="color: #fff">Al-Amin Firdows</a>
+            Developed at <a href="https://devxpart.com/" target="_blank" style="color: #fff">DevXpart</a>, by <a
+                href="https://alamin.me" target="_blank" style="color: #fff">Al-Amin Firdows</a>
         </div>
     </footer>
     <!-- Essential javascripts for application to work-->
@@ -20,7 +20,7 @@
     <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
     <script type="text/javascript">
 $('.datepicker').datepicker({
-    format: "dd/mm/yyyy",
+    format: "dd M yyyy",
     autoclose: true,
     todayHighlight: true
 });

@@ -219,9 +219,9 @@ class Admin extends Controller
 
             if (isset($_POST['publish-activity']) || isset($_POST['draft-activity'])) {
                 if (isset($_POST['draft-activity'])) {
-                    $post_status = 3;
+                    $activity_status = 3;
                 } else {
-                    $post_status = $_POST['status'];
+                    $activity_status = $_POST['status'];
                 }
 
                 $activity_data = array(
@@ -232,17 +232,14 @@ class Admin extends Controller
                     'venue' => $this->secure_input($_POST['venue']),
                     'category' => $this->secure_input($_POST['category']),
                     'semester' => $this->secure_input($_POST['semester']),
-                    'status' => $this->secure_input($post_status),
+                    'status' => $this->secure_input($activity_status),
                     'createdAt' => date('Y-m-d H:i:s')
                 );
 
-                // var_dump($post_data);
-                // exit();
-
                 $add_activity = $semester_activity_model->insert($activity_data);
-                if ($add_activity && $post_status == 3) {
+                if ($add_activity && $activity_status == 3) {
                     set_flush_data('add_post_responce', 'Your Activity has been saved as Draft!');
-                } else if ($add_activity && $post_status == 2) {
+                } else if ($add_activity && $activity_status == 2) {
                     set_flush_data('add_post_responce', 'Your Activity has been saved as Unpublished!');
                 } else if ($add_activity) {
                     set_flush_data('add_post_responce', 'Your Activity has been Published!');
@@ -263,46 +260,30 @@ class Admin extends Controller
             $category_model = $this->load_model('Category_Model');
             $semester_model = $this->load_model('Semester_Model');
 
-            if (isset($_POST['update-post'])) {
+            if (isset($_POST['update-activity'])) {
 
-                $featuredImageUrl = NULL;
-                $has_featured_photo = 0;
-                $post_status = $this->secure_input($_POST['status']);
-                if (isset($_FILES["featured-image"])) {
-                    if (file_exists($_FILES["featured-image"]["tmp_name"])) {
-                        $target_dir = ROOT . "uploads/post-images/";
-                        $target_file = $target_dir . basename($_FILES["featured-image"]["name"]);
-                        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                        $has_featured_photo = 1;
-                    }
-
-                    if ($has_featured_photo && $_FILES["featured-image"]["size"] > 5000000) {
-                        set_flush_data('add_post_responce', 'Sorry, your file is too large.', 'error');
-                    } else if ($has_featured_photo && $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG" && $imageFileType != "GIF") {
-                        set_flush_data('add_post_responce', 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.', 'error');
-                    } else if ($has_featured_photo && move_uploaded_file($_FILES["featured-image"]["tmp_name"], $target_file)) {
-                        $featuredImageUrl = basename($_FILES["featured-image"]["name"]);
-                    }
-                }
-
-                $post_data = array(
+                $activity_status = $this->secure_input($_POST['status']);
+                $activity_data = array(
                     'title' => $this->secure_input($_POST['title']),
-                    'body' => $this->secure_input($_POST['body']),
+                    'description' => $this->secure_input($_POST['description']),
+                    'date' => $this->secure_input($_POST['date']),
+                    'time' => $this->secure_input($_POST['time']),
+                    'venue' => $this->secure_input($_POST['venue']),
                     'category' => $this->secure_input($_POST['category']),
-                    'status' => $this->secure_input($_POST['status']),
-                    'featuredImage' => $featuredImageUrl,
+                    'semester' => $this->secure_input($_POST['semester']),
+                    'status' => $this->secure_input($activity_status),
                     'updatedAt' => date('Y-m-d H:i:s')
                 );
 
-                $update_post = $post_model->updatePost($id, $post_data);
-                if ($update_post && $post_status == 3) {
-                    set_flush_data('update_post_responce', 'Your Post has been saved as Draft!', 'success');
-                } else if ($update_post && $post_status == 2) {
-                    set_flush_data('update_post_responce', 'Your Post has been saved as Unblished!', 'success');
-                } else if ($update_post) {
-                    set_flush_data('update_post_responce', 'Your Post has been Published!', 'success');
+                $update_activity = $semester_activity_model->update($id, $activity_data);
+                if ($update_activity && $activity_status == 3) {
+                    set_flush_data('update_activity_responce', 'Your Post has been saved as Draft!', 'success');
+                } else if ($update_activity && $activity_status == 2) {
+                    set_flush_data('update_activity_responce', 'Your Post has been saved as Unpublished!', 'success');
+                } else if ($update_activity) {
+                    set_flush_data('update_activity_responce', 'Your Post has been Published!', 'success');
                 } else {
-                    set_flush_data('update_post_responce', 'Something Wrong!', 'error');
+                    set_flush_data('update_activity_responce', 'Something Wrong!', 'error');
                 }
             }
 
