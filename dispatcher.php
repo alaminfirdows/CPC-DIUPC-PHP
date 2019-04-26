@@ -29,7 +29,6 @@ class Dispatcher
                 echo "404 Not Found!";
             }
         }
-        
     }
 
     public function loadController()
@@ -43,10 +42,9 @@ class Dispatcher
             if (file_exists(ROOT . 'Application/Views/errors/404.php')) {
                 require(ROOT . 'Application/Views/errors/404.php');
             } else {
-                echo "Controller '{$ctrl_name}' Dosen't exists!";
+                echo "Controller '{$ctrl_name}' Doesn't exists!";
             }
             die();
         }
     }
-
 }

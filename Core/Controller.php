@@ -23,23 +23,18 @@ class Controller
         $this->layout = $d;
     }
 
-    protected function view($filename, $data = '')
+    protected function view($filename, $data = array())
     {
         if (is_array($data) && !empty($data)) {
             $this->vars = array_merge($this->vars, $data);
         }
 
-        $sql = "SELECT * FROM `categorys` WHERE `categorys`.`status` = 1";
-        $req = Database::getBdd()->prepare($sql);
-        $req->execute();
-        $blog_categorys = $req->fetchAll(PDO::FETCH_OBJ);
-        
         extract($this->vars);
         ob_start();
         if (file_exists(ROOT . "Application/Views/" . $filename . '.php')) {
             require(ROOT . "Application/Views/" . $filename . '.php');
         } else {
-            echo "View '{$filename}' Dosen't exists!";;
+            echo "View '{$filename}' Doesn't exists!";;
             die();
         }
     }
@@ -54,8 +49,7 @@ class Controller
 
     protected function secure_form($form)
     {
-        foreach ($form as $key => $value)
-        {
+        foreach ($form as $key => $value) {
             $form[$key] = $this->secure_input($value);
         }
     }
@@ -66,9 +60,8 @@ class Controller
             require(ROOT . "Application/Models/" . ucfirst($model_name) . '.php');
             return new $model_name();
         } else {
-            echo "Model '{$model_name}' Dosen't exists!";;
+            echo "Model '{$model_name}' Doesn't exists!";;
             die();
         }
-        
     }
 }
