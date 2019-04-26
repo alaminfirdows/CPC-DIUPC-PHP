@@ -1,4 +1,11 @@
-Stage4CancerCommunity MVC Blog (Version: 1.0.2)
+/*
+*   Project:    CPC DIU PC
+*   Version:    1.0.0
+*   Author:     Al-Amin Firdows
+*   Email:      alaminfirdows@gmail.com
+*   Skype:      alamin.firdows
+*   URI:        http://alamin.me
+*/
 
 To install this framework, You should update the config file included on 'Application/Config/core.php' and 'Application/Config/db.php'.
 

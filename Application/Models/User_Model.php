@@ -1,7 +1,7 @@
 <?php
 /*
-*   Project:    Stage4CancerCommunity
-*   Version:    1.0.2
+*   Project:    CPC DIU PC
+*   Version:    1.0.0
 *   Author:     Al-Amin Firdows
 *   Email:      alaminfirdows@gmail.com
 *   Skype:      alamin.firdows
@@ -67,5 +67,3 @@ class User_Model extends Model
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 }
-
-?>

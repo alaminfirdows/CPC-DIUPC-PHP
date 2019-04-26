@@ -1,6 +1,6 @@
 /*
 *   Project:    CPC DIU PC
-*   Version:    1.0.2
+*   Version:    1.0.0
 *   Author:     Al-Amin Firdows
 *   Email:      alaminfirdows@gmail.com
 *   Skype:      alamin.firdows

@@ -1,6 +1,6 @@
 <?php
 /*
-*   Project:    Stage4CancerCommunity
+*   Project:    CPC DIU PC
 *   Version:    1.0.0
 *   Author:     Al-Amin Firdows
 *   Email:      alaminfirdows@gmail.com
@@ -63,20 +63,20 @@ class Posts extends Controller
             $add_comment = $post_model->insertComment($comment_data);
 
             if ($add_comment) {
-                if($subscriberId != NULL) {
+                if ($subscriberId != NULL) {
                     set_flush_data('comment_responce', 'Your Comment is Added! It will be publish by our Moderator.');
-                } else if($authorId != NULL) {
+                } else if ($authorId != NULL) {
                     set_flush_data('comment_responce', 'Your Comment is Added!');
                 } else {
-                   set_flush_data('comment_responce', 'Something Wrong!');
+                    set_flush_data('comment_responce', 'Something Wrong!');
                 }
             } else {
-               set_flush_data('comment_responce', 'Something Wrong!');
+                set_flush_data('comment_responce', 'Something Wrong!');
             }
         }
         $data = array(
             'post_data' => $post,
-            'post_author' => $post_author->firstName.' '.$post_author->lastName,
+            'post_author' => $post_author->firstName . ' ' . $post_author->lastName,
             'post_cat' => $post_model->getCategoryByID($post->category)->name,
             'related_posts' => $post_model->getRelatedPostByPostID($id),
             'comnents' => $post_model->getCommentsByPostID($id),

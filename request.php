@@ -1,6 +1,6 @@
 <?php
 /*
-*   Project:    Stage4CancerCommunity
+*   Project:    CPC DIU PC
 *   Version:    1.0.0
 *   Author:     Al-Amin Firdows
 *   Email:      alaminfirdows@gmail.com
@@ -15,5 +15,3 @@ class Request {
     $this->url = $_SERVER["REQUEST_URI"];
   }
 }
-
-?>

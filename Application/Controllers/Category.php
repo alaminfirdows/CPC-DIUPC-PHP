@@ -1,6 +1,6 @@
 <?php
 /*
-*   Project:    Stage4CancerCommunity
+*   Project:    CPC DIU PC
 *   Version:    1.0.0
 *   Author:     Al-Amin Firdows
 *   Email:      alaminfirdows@gmail.com
@@ -29,4 +29,3 @@ class Category extends Controller {
     }
   }
 }
-?>
