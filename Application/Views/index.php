@@ -480,11 +480,14 @@
                     <ul class="event_list_ul">
                         <div class="row">
                             <?php foreach ($semester_activities as $semester_activity) : ?>
+                            <?php $date = explode(" ", $semester_activity->date); ?>
                             <li class="event_list_li col-md-6">
                                 <div class="card event_list_item">
                                     <div class="left">
                                         <div class="event-date">
-                                            <h3><a href="event-details.html">20 <span>Jan</span></a></h3>
+                                            <h3><a
+                                                    href="event-details.html"><?= $date[0]; ?><span><?= $date[1]; ?></span></a>
+                                            </h3>
                                         </div>
                                     </div>
                                     <div class="event_list_info">
@@ -509,8 +512,6 @@
     </div>
 </section>
 <!--event-->
-
-
 
 <!-- blog -->
 <section class="blog_section" id="blog">
