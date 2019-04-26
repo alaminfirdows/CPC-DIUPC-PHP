@@ -15,7 +15,7 @@ class Semester_Model extends Model
 
     public function insert($data)
     {
-        $sql = "INSERT `{$this->semesters_table}` (`name`, `url`, `status`) VALUES(:name, :url, :status)";
+        $sql = "INSERT `{$this->semesters_table}` (`name`, `status`) VALUES(:name, :status)";
         $req = Database::getBdd()->prepare($sql);
         return $req->execute($data);
     }
@@ -59,7 +59,7 @@ class Semester_Model extends Model
 
     public function update($id, $data)
     {
-        $sql = "UPDATE `{$this->semesters_table}` SET `name` = :name, `url` = :url, `status` = :status WHERE `{$this->semesters_table}`.`id` = " . $id;
+        $sql = "UPDATE `{$this->semesters_table}` SET `name` = :name, `status` = :status WHERE `{$this->semesters_table}`.`id` = " . $id;
         $req = Database::getBdd()->prepare($sql);
         return $req->execute($data);
     }

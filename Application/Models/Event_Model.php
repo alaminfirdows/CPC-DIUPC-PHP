@@ -15,22 +15,21 @@ class Event_Model extends Model
 
     public function insert($data)
     {
-        $sql = "INSERT INTO `posts` (`title`, `body`, `category`, `status`, `authorId`, `featuredImage`, `createdAt`) VALUES (:title, :body, :category, :status, :authorId, :featuredImage, :createdAt)";
-
+        $sql = "INSERT INTO `{$this->events_table}` (`title`, `description`, `date`, `category`, `semester`, `status`, `authorId`, `featuredImage`, `createdAt`) VALUES (:title, :description, :date, :category, :semester, :status, :authorId, :featuredImage, :createdAt)";
         $req = Database::getBdd()->prepare($sql);
         return $req->execute($data);
     }
 
     public function update($id, $data)
     {
-        $sql = "UPDATE `{$this->posts_table}` SET `title` = :title, `body` = :body, `category` = :category, `status` = :status, `featuredImage` = :featuredImage, `updatedAt` = :updatedAt WHERE `{$this->posts_table}`.`id` = " . $id;
+        $sql = "UPDATE `{$this->events_table}` SET `title` = :title, `description` = :description, `date` = :date, `category` = :category, `semester` = :semester, `status` = :status, `featuredImage` = :featuredImage, `updatedAt` = :updatedAt WHERE `{$this->events_table}`.`id` = " . $id;
         $req = Database::getBdd()->prepare($sql);
         return $req->execute($data);
     }
 
     public function delete($id)
     {
-        $sql = "DELETE FROM `{$this->posts_table}` WHERE `{$this->posts_table}`.`id` = " . $id;
+        $sql = "DELETE FROM `{$this->events_table}` WHERE `{$this->events_table}`.`id` = " . $id;
         $req = Database::getBdd()->prepare($sql);
         return $req->execute();
     }
@@ -62,7 +61,7 @@ class Event_Model extends Model
 
     public function getEventByIDWithAllMeta($id)
     {
-        $sql = "SELECT `posts`.*, CONCAT(COALESCE(`users`.`firstName`,''), ' ', COALESCE(`users`.`lastName`,'')) as `author`, `categorys`.`name` as `cat_name` FROM `posts` LEFT JOIN `categorys` ON `posts`.`category` = `categorys`.`id` LEFT JOIN `users` ON `posts`.`authorId` = `users`.`id` WHERE (`posts`.`status` = 1 AND `posts`.`id` = " . $id . ")";
+        $sql = "SELECT `{$this->events_table}`.*, CONCAT(COALESCE(`users`.`firstName`,''), ' ', COALESCE(`users`.`lastName`,'')) as `author`, `categorys`.`name` as `cat_name` FROM `{$this->events_table}` LEFT JOIN `categorys` ON `{$this->events_table}`.`category` = `categorys`.`id` LEFT JOIN `users` ON `{$this->events_table}`.`authorId` = `users`.`id` WHERE (`{$this->events_table}`.`status` = 1 AND `{$this->events_table}`.`id` = " . $id . ")";
         $req = Database::getBdd()->prepare($sql);
         $req->execute();
         return $req->fetch(PDO::FETCH_OBJ);

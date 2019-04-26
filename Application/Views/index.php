@@ -130,7 +130,7 @@
                                     src="<?php echo base_url('assets'); ?>/img/user/aminul-sir.png" />
                             </div>
                             <div class="teacher_list_info">
-                                <p class="team_member_name">Dr. Aminul Haque</p>
+                                <p class="team_member_name">Dr. S. M. Aminul Haque</p>
                                 <p class="team_member_status">Associate Head, CSE</p>
                             </div>
                         </a>
@@ -142,7 +142,7 @@
                                     src="<?php echo base_url('assets'); ?>/img/user/raju-sir.png" />
                             </div>
                             <div class="teacher_list_info">
-                                <p class="team_member_name">Mahfujur Rahman</p>
+                                <p class="team_member_name">Mr. Md. Mahfujur Rahman</p>
                                 <p class="team_member_status">Lecturer, CSE</p>
                             </div>
                         </a>
@@ -151,10 +151,10 @@
                         <a class="team_list_item">
                             <div class="">
                                 <img class="team_list_img"
-                                    src="<?php echo base_url('assets'); ?>/img/user/hasin-rehena-mam.png" />
+                                    src="<?php echo base_url('assets'); ?>/img/user/rehana-mam.jpg" />
                             </div>
                             <div class="teacher_list_info">
-                                <p class="team_member_name">Hasin Rehena</p>
+                                <p class="team_member_name">Ms. Hasin Rehana</p>
                                 <p class="team_member_status">Lecturer, CSE</p>
                             </div>
                         </a>
@@ -163,10 +163,10 @@
                         <a class="team_list_item">
                             <div class="">
                                 <img class="team_list_img"
-                                    src="<?php echo base_url('assets'); ?>/img/user/saifuzaman-sir.png" />
+                                    src="<?php echo base_url('assets'); ?>/img/user/saifuzzaman-sir.jpg" />
                             </div>
                             <div class="teacher_list_info">
-                                <p class="team_member_name">Mr. Saifuzaman</p>
+                                <p class="team_member_name">Mohd. Saifuzzaman</p>
                                 <p class="team_member_status">Lecturer, CSE</p>
                             </div>
                         </a>
@@ -175,7 +175,7 @@
                         <a class="team_list_item">
                             <div class="">
                                 <img class="team_list_img"
-                                    src="<?php echo base_url('assets'); ?>/img/user/rasel-sir.png" />
+                                    src="<?php echo base_url('assets'); ?>/img/user/rasel-sir.jpg" />
                             </div>
                             <div class="teacher_list_info">
                                 <p class="team_member_name">Rasel Sarker</p>
@@ -190,7 +190,7 @@
                                     src="<?php echo base_url('assets'); ?>/img/user/reduanul-sir.png" />
                             </div>
                             <div class="teacher_list_info">
-                                <p class="team_member_name">Mr. Reduanul Haque</p>
+                                <p class="team_member_name">Mr. Md. Reduanul Haque</p>
                                 <p class="team_member_status">Lecturer, CSE</p>
                             </div>
                         </a>
@@ -202,7 +202,7 @@
                                     src="<?php echo base_url('assets'); ?>/img/user/tanvir-sir.png" />
                             </div>
                             <div class="teacher_list_info">
-                                <p class="team_member_name">Tanvir Ahammad</p>
+                                <p class="team_member_name">Mr. Md. Tanvir Rahman</p>
                                 <p class="team_member_status">Lecturer, CSE</p>
                             </div>
                         </a>
@@ -294,7 +294,7 @@
                                     src="<?php echo base_url('assets'); ?>/img/members/anher.jpg" />
                             </div>
                             <div class="team_list_info">
-                                <p class="team_member_name">Anhar</p>
+                                <p class="team_member_name">Anhar Hossain Khan</p>
                                 <p class="team_member_status">Join Secretary</p>
                             </div>
                         </a>
@@ -342,7 +342,7 @@
                                     src="<?php echo base_url('assets'); ?>/img/members/photographer.jpg" />
                             </div>
                             <div class="team_list_info">
-                                <p class="team_member_name">Fahad</p>
+                                <p class="team_member_name">Fahad Hossain</p>
                                 <p class="team_member_status">Photographer</p>
                             </div>
                         </a>
@@ -434,7 +434,7 @@
                                         src="<?php echo base_url('assets'); ?>/img/members/lead_executive.jpg" />
                                 </div>
                                 <div class="team_list_info">
-                                    <p class="team_member_name">Nadim</p>
+                                    <p class="team_member_name">Mahimul Islam Nadim</p>
                                     <p class="team_member_status">Executive Head</p>
                                 </div>
                             </a>

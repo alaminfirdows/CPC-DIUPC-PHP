@@ -40,16 +40,16 @@
                     <small class="form-text text-muted" id="titleHelp">It will shows as Activity title.</small>
                 </div>
                 <div class="form-group">
-                    <label for="body">Activity Description</label>
+                    <label for="description">Activity Description</label>
                     <textarea class="ckeditor form-control" id="description" name="description" rows="3" required></textarea>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <label for="body">Date</label>
+                        <label for="date">Date</label>
                         <input class="form-control datepicker" id="date" name="date" type="text" required aria-describedby="dateHelp" placeholder="Enter Activity Date">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="body">Time</label>
+                        <label for="time">Time</label>
                         <input class="form-control" id="time" name="time" type="time" required aria-describedby="timeHelp" placeholder="Enter Activity Time">
                     </div>
                 </div>

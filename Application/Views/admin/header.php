@@ -95,6 +95,8 @@
                     <!-- <li><a class="treeview-item" href="<?= base_url('admin'); ?>/users/add"><i class="icon fa fa-circle-o"></i> Add User</a></li> -->
                 </ul>
             </li>
+            <li><a class="app-menu__item" href="<?= base_url(); ?>" target="_blank"><i
+                        class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Visit</span></a></li>
             <li><a class="app-menu__item" href="<?= base_url('auth/logout'); ?>"><i
                         class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Log Out</span></a></li>
         </ul>

@@ -13,7 +13,6 @@ class Admin extends Controller
     private $authorId;
     public function __construct()
     {
-
         if ((!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] != 1)) {
             header('Location: ' . base_url('auth/login'));
             exit();
@@ -57,64 +56,68 @@ class Admin extends Controller
                 'events' => $event_model->getAllEvents()
             );
 
-            // var_dump($data);
-            // exit();
-
             $this->view('admin/header');
             $this->view('admin/events', $data);
             $this->view('admin/footer');
         } else if (!empty($action) && $action == 'add') {
 
-            $event_model = $this->load_model('event_model');
+            $event_model = $this->load_model('Event_model');
+            $category_model = $this->load_model('Category_Model');
+            $semester_model = $this->load_model('Semester_Model');
             $data = array(
-                'categories' => $event_model->getAllCategories()
+                'categories' => $category_model->getAllCategories(),
+                'semesters' => $semester_model->getAllSemesters()
             );
 
-            if (isset($_POST['publish-post']) || isset($_POST['draft-post'])) {
-                if (isset($_POST['draft-post'])) {
-                    $post_status = 3;
+            if (isset($_POST['publish-event']) || isset($_POST['draft-event'])) {
+                if (isset($_POST['draft-event'])) {
+                    $event_status = 3;
                 } else {
-                    $post_status = $_POST['status'];
+                    $event_status = $_POST['status'];
                 }
                 $featuredImageUrl = NULL;
                 $has_featured_photo = 0;
                 if (isset($_FILES["featured-image"])) {
                     if (file_exists($_FILES["featured-image"]["tmp_name"])) {
-                        $target_dir = ROOT . "uploads/post-images/";
+                        $target_dir = ROOT . "uploads/event-images/";
                         $target_file = $target_dir . basename($_FILES["featured-image"]["name"]);
                         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                        $file_name = 'event_' . time() . '.' . $imageFileType;
+                        $target_file = $target_dir . $file_name;
                         $has_featured_photo = 1;
                     }
 
                     if ($has_featured_photo && $_FILES["featured-image"]["size"] > 5000000) {
-                        set_flush_data('add_post_responce', 'Sorry, your file is too large.', 'error');
+                        set_flush_data('add_event_responce', 'Sorry, your file is too large.', 'error');
                     } else if ($has_featured_photo && $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG" && $imageFileType != "GIF") {
-                        set_flush_data('add_post_responce', 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.', 'error');
+                        set_flush_data('add_event_responce', 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.', 'error');
                     } else if ($has_featured_photo && move_uploaded_file($_FILES["featured-image"]["tmp_name"], $target_file)) {
-                        $featuredImageUrl = basename($_FILES["featured-image"]["name"]);
+                        $featuredImageUrl = $file_name;
                     }
                 }
 
 
-                $post_data = array(
+                $event_data = array(
                     'title' => $this->secure_input($_POST['title']),
-                    'body' => $this->secure_input($_POST['body']),
+                    'description' => $this->secure_input($_POST['description']),
+                    'date' => $this->secure_input($_POST['date']),
                     'category' => $this->secure_input($_POST['category']),
-                    'status' => $this->secure_input($post_status),
+                    'semester' => $this->secure_input($_POST['semester']),
+                    'status' => $this->secure_input($event_status),
                     'authorId' => $this->authorId,
                     'featuredImage' => $featuredImageUrl,
                     'createdAt' => date('Y-m-d H:i:s')
                 );
 
-                $add_post = $post_model->insertPost($post_data);
-                if ($add_post && $post_status == 3) {
-                    set_flush_data('add_post_responce', 'Your Post has been saved as Draft!');
-                } else if ($add_post && $post_status == 2) {
-                    set_flush_data('add_post_responce', 'Your Post has been saved as Unblished!');
-                } else if ($add_post) {
-                    set_flush_data('add_post_responce', 'Your Post has been Published!');
+                $add_event = $event_model->insert($event_data);
+                if ($add_event && $event_status == 3) {
+                    set_flush_data('add_event_responce', 'Your event has been saved as Draft!');
+                } else if ($add_event && $event_status == 2) {
+                    set_flush_data('add_event_responce', 'Your event has been saved as Unpublished!');
+                } else if ($add_event) {
+                    set_flush_data('add_event_responce', 'Your event has been Published!');
                 } else {
-                    set_flush_data('add_post_responce', 'Something Wrong!');
+                    set_flush_data('add_event_responce', 'Something Wrong!');
                 }
             }
 
@@ -126,54 +129,62 @@ class Admin extends Controller
                 header('Location: ' . base_url('admin/events'));
                 exit();
             }
-            $post_model = $this->load_model('Post_Model');
+            $event_model = $this->load_model('Event_model');
+            $category_model = $this->load_model('Category_Model');
+            $semester_model = $this->load_model('Semester_Model');
 
-            if (isset($_POST['update-post'])) {
+            if (isset($_POST['update-event'])) {
 
                 $featuredImageUrl = NULL;
                 $has_featured_photo = 0;
-                $post_status = $this->secure_input($_POST['status']);
-                if (isset($_FILES["featured-image"])) {
+                $event_status = $this->secure_input($_POST['status']);
+                if (isset($_FILES["featured-image"]) && file_exists($_FILES["featured-image"]["tmp_name"])) {
                     if (file_exists($_FILES["featured-image"]["tmp_name"])) {
-                        $target_dir = ROOT . "uploads/post-images/";
+                        $target_dir = ROOT . "uploads/event-images/";
                         $target_file = $target_dir . basename($_FILES["featured-image"]["name"]);
                         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                        $file_name = 'event_' . time() . '.' . $imageFileType;
+                        $target_file = $target_dir . $file_name;
                         $has_featured_photo = 1;
                     }
 
                     if ($has_featured_photo && $_FILES["featured-image"]["size"] > 5000000) {
-                        set_flush_data('add_post_responce', 'Sorry, your file is too large.', 'error');
+                        set_flush_data('add_event_responce', 'Sorry, your file is too large.', 'error');
                     } else if ($has_featured_photo && $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG" && $imageFileType != "GIF") {
-                        set_flush_data('add_post_responce', 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.', 'error');
+                        set_flush_data('add_event_responce', 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.', 'error');
                     } else if ($has_featured_photo && move_uploaded_file($_FILES["featured-image"]["tmp_name"], $target_file)) {
-                        $featuredImageUrl = basename($_FILES["featured-image"]["name"]);
+                        $featuredImageUrl = $file_name;
                     }
+                } else {
+                    $featuredImageUrl = $event_model->getEventByID($id)->featuredImage;
                 }
-
-                $post_data = array(
+                $event_data = array(
                     'title' => $this->secure_input($_POST['title']),
-                    'body' => $this->secure_input($_POST['body']),
+                    'description' => $this->secure_input($_POST['description']),
+                    'date' => $this->secure_input($_POST['date']),
                     'category' => $this->secure_input($_POST['category']),
-                    'status' => $this->secure_input($_POST['status']),
+                    'semester' => $this->secure_input($_POST['semester']),
+                    'status' => $this->secure_input($event_status),
                     'featuredImage' => $featuredImageUrl,
                     'updatedAt' => date('Y-m-d H:i:s')
                 );
 
-                $update_post = $post_model->updatePost($id, $post_data);
-                if ($update_post && $post_status == 3) {
-                    set_flush_data('update_post_responce', 'Your Post has been saved as Draft!', 'success');
-                } else if ($update_post && $post_status == 2) {
-                    set_flush_data('update_post_responce', 'Your Post has been saved as Unblished!', 'success');
-                } else if ($update_post) {
-                    set_flush_data('update_post_responce', 'Your Post has been Published!', 'success');
+                $update_event = $event_model->update($id, $event_data);
+                if ($update_event && $event_status == 3) {
+                    set_flush_data('update_event_responce', 'Your event has been saved as Draft!', 'success');
+                } else if ($update_event && $event_status == 2) {
+                    set_flush_data('update_event_responce', 'Your event has been saved as Unpublished!', 'success');
+                } else if ($update_event) {
+                    set_flush_data('update_event_responce', 'Your event has been Published!', 'success');
                 } else {
-                    set_flush_data('update_post_responce', 'Something Wrong!', 'error');
+                    set_flush_data('update_event_responce', 'Something Wrong!', 'error');
                 }
             }
 
             $data = array(
-                'post_data' => $post_model->getPostByID($id),
-                'categories' => $post_model->getAllCategories()
+                'event_data' => $event_model->getEventByID($id),
+                'categories' => $category_model->getAllCategories(),
+                'semesters' => $semester_model->getAllSemesters()
             );
 
             $this->view('admin/header');
@@ -385,6 +396,95 @@ class Admin extends Controller
             );
             $this->view('admin/header');
             $this->view('admin/category-edit', $data);
+            $this->view('admin/footer');
+        } else {
+            header('Location: ' . base_url('admin'));
+            exit();
+        }
+    }
+
+
+    public function semesters($action = '', $id = '')
+    {
+        $semester_model = $this->load_model('Semester_Model');
+
+        if ($action == '') {
+
+            if (isset($_POST['active'])) {
+                $semester_id = $this->secure_input($_POST['semester-id']);
+                $active = $semester_model->active($semester_id);
+                if ($active) {
+                    set_flush_data('semester_moderation_responce', 'semester Active!');
+                } else {
+                    set_flush_data('semester_moderation_responce', 'Something Wrong!');
+                }
+            } else if (isset($_POST['disable'])) {
+                $semester_id = $this->secure_input($_POST['semester-id']);
+                $disable = $semester_model->disable($semester_id);
+                if ($disable) {
+                    set_flush_data('semester_moderation_responce', 'semester Disabled!');
+                } else {
+                    set_flush_data('semester_moderation_responce', 'Something Wrong!');
+                }
+            } else if (isset($_POST['delete'])) {
+                $semester_id = $this->secure_input($_POST['semester-id']);
+                $delete = $semester_model->delete($semester_id);
+                if ($delete) {
+                    set_flush_data('semester_moderation_responce', 'semester Deleted!');
+                } else {
+                    set_flush_data('semester_moderation_responce', 'Something Wrong!');
+                }
+            }
+
+            $data = array(
+                'semesters' => $semester_model->getAllSemesters(),
+            );
+            $this->view('admin/header');
+            $this->view('admin/semester', $data);
+            $this->view('admin/footer');
+        } else if (!empty($action) && $action == 'add') {
+            $data = array();
+            if (isset($_POST['add-semester'])) {
+                $semester_data = array(
+                    'name' => $this->secure_input($_POST['name']),
+                    'status' => $this->secure_input($_POST['status'])
+                );
+
+                $add_semester = $semester_model->insert($semester_data);
+                if ($add_semester) {
+                    set_flush_data('semester_moderation_responce', 'semester Added!', 'success');
+                } else {
+                    set_flush_data('semester_moderation_responce', 'Something Wrong!', 'error');
+                }
+            }
+
+            $this->view('admin/header');
+            $this->view('admin/semester-add', $data);
+            $this->view('admin/footer');
+        } else if (!empty($action) && $action == 'edit') {
+            if (!$id) {
+                header('Location: ' . base_url('admin/categories'));
+                exit();
+            }
+
+            if (isset($_POST['save-semester'])) {
+                $semester_data = array(
+                    'name' => $this->secure_input($_POST['name']),
+                    'status' => $this->secure_input($_POST['status'])
+                );
+                $save_semester = $semester_model->update($id, $semester_data);
+                if ($save_semester) {
+                    set_flush_data('semester_moderation_responce', 'semester Edited!');
+                } else {
+                    set_flush_data('semester_moderation_responce', 'Something Wrong!');
+                }
+            }
+
+            $data = array(
+                'semester_data' => $semester_model->getSemestersData($id)
+            );
+            $this->view('admin/header');
+            $this->view('admin/semester-edit', $data);
             $this->view('admin/footer');
         } else {
             header('Location: ' . base_url('admin'));

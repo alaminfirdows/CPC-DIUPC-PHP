@@ -9,7 +9,9 @@
 */
 
 ob_start();
-if (!isset($_SESSION)) { session_start(); }
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 define('WEBROOT', str_replace("Public/index.php", "", $_SERVER["SCRIPT_NAME"]));
 define('ROOT', str_replace("Public/index.php", "", $_SERVER["SCRIPT_FILENAME"]));
@@ -25,21 +27,19 @@ require(ROOT . 'router.php');
 require(ROOT . 'request.php');
 require(ROOT . 'dispatcher.php');
 
-function base_url($url = '') {
-  return BASE_URL . $url;
+function base_url($url = '')
+{
+    return BASE_URL . $url;
 }
 
-function post_image_url($file = '') {
-    if ($file) return BASE_URL. 'uploads/post-images/' . $file;
+function event_image_url($file = '')
+{
+    if ($file) return BASE_URL . 'uploads/event-images/' . $file;
     return;
 }
-function event_image_url($file = '') {
-    if ($file) return BASE_URL. 'uploads/event-images/' . $file;
-    return;
-}
 
 
-function set_flush_data($var, $data, $type ='')
+function set_flush_data($var, $data, $type = '')
 {
     if (!isset($_SESSION)) session_start();
     if ($var != '') {
@@ -52,13 +52,12 @@ function get_flush_data($var)
 {
     if (!isset($_SESSION)) session_start();
     if (isset($_SESSION["flush_data"][$var])) {
-    	$flush_data = $_SESSION["flush_data"][$var];
+        $flush_data = $_SESSION["flush_data"][$var];
     } else {
-    	$flush_data = NULL;
+        $flush_data = NULL;
     }
     unset($_SESSION["flush_data"][$var]);
     return $flush_data;
-    
 }
 
 $dispatch = new Dispatcher();
